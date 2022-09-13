@@ -5,10 +5,11 @@ const customerShema= mongoose.Schema({
      lastName:String ,
      email:String,
      PhoneNumber:Number,
-     dob:Date,
+     dob:String,
+     department:String
 
 })
 
-const customerModel= mongoose.model("Customers" , customerShema )
+const customerModel= mongoose.model("customers" , customerShema )
 
 module.exports =customerModel;
