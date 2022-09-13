@@ -1,4 +1,4 @@
-const mongoose = request('mongoose')
+const mongoose = require('mongoose')
 
 const loanShema= mongoose.Schema({
      loanName:String,

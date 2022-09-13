@@ -1,6 +1,6 @@
 const mongoose = request('mongoose')
 
-const customerShema= mongoose.Schema({
+const auditShema= mongoose.Schema({
      firstName:String,
      lastName:String ,
      email:String,
@@ -9,6 +9,6 @@ const customerShema= mongoose.Schema({
 
 })
 
-const customerModel= mongoose.model("Customers" , customerShema )
+const auditModel= mongoose.model("Customers" , auditShema )
 
-module.exports =customerModel;
+module.exports =auditModel;
