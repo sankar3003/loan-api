@@ -6,14 +6,20 @@ const customerModel= require("./../models/customer.model");
 // create new customer 
 
 router.post("/add", function(req,res,next){
-console.log("dfsf");
+console.log("req", req.body);
+let firstName=req.body.firstName
+let lastName=req.body.lastName
+let email=req.body.email
+let PhoneNumber=req.body.PhoneNumber
+let dob=req.body.dob
+let department=req.body.department
   let customerobj = new customerModel({
-    firstName:"Raji", 
-    lastName:"santhose " ,
-    email:"raji@yopmail.com",
-    PhoneNumber:54354325345,
-    dob:"30-1-1998",
-    department:"Ror"
+    firstName:firstName, 
+    lastName:lastName,
+    email:email,
+    PhoneNumber:PhoneNumber,
+    dob:dob,
+    department:department
   }) 
   
   customerobj.save(function(err,resss){
@@ -69,20 +75,26 @@ router.get('/view', function(req, res, next) {
 
 // find one customer and update 
 router.put('/update', function(req, res, next) {
-  console.log("tets");
+  
   let id= req.query.user_id; // get the query params in express js
   console.log("id" ,id);
-  let customerobj ={
-    firstName:"Ravi", 
-    lastName:"Yathav" ,
-    email:"ravi@yopmail.com",
-    PhoneNumber:6344643122,
-    dob:"01-01-1996",
-    department:"Sales" 
-  }
-  customerModel.findByIdAndUpdate(id,customerobj,function(err,customerRes){
+  let firstName=req.body.firstName
+  let lastName=req.body.lastName
+  let email=req.body.email
+  let PhoneNumber=req.body.PhoneNumber
+  let dob=req.body.dob
+  let department=req.body.department
+    let customerobj ={
+      firstName:firstName, 
+      lastName:lastName,
+      email:email,
+      PhoneNumber:PhoneNumber,
+      dob:dob,
+      department:department 
+    } 
+  customerModel.findByIdAndUpdate(id,customerobj,function(err,customerobj){
     if(err){
-      console.log("sdfsf" ,err);
+
       res.send({
         status:500,message:"Unable to update the customer"
       })
@@ -91,9 +103,9 @@ router.put('/update', function(req, res, next) {
     }
 
     else{
-       console.log("no");
+      
     
-      res.send({status:200, results:customerRes})
+      res.send({status:200, results:customerobj})
     }
   })
 });
