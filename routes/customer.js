@@ -3,27 +3,27 @@ var router = express.Router();
 
 const customerModel= require("./../models/customer.model");
 
-// create new customer 
+// create new customer
 
 router.post("/add", function(req,res,next){
 console.log("dfsf");
   let customerobj = new customerModel({
-    firstName:"Raji", 
+    firstName:"Raji",
     lastName:"santhose " ,
     email:"raji@yopmail.com",
     PhoneNumber:54354325345,
     dob:"30-1-1998",
     department:"Ror"
-  }) 
-  
+  })
+
   customerobj.save(function(err,resss){
-  
+
     if(err){
       res.send({
         status:500,message:"Unable to saave customer"
       })
 
-    
+
     }
     else{
       res.send({status:200, message:"Saved", customerDetails:resss})
@@ -39,7 +39,7 @@ router.get('/list', function(req, res, next) {
         status:500,message:"Unable to find customer"
       })
 
-    
+
     }
     else{
       let length= customerData.length;
@@ -48,7 +48,7 @@ router.get('/list', function(req, res, next) {
   })
 });
 
-// get details of a specific customer 
+// get details of a specific customer
 router.get('/view', function(req, res, next) {
   let id= req.query.user_id; // get the query params in express js
   console.log("id" ,id);
@@ -58,7 +58,7 @@ router.get('/view', function(req, res, next) {
         status:500,message:"Unable to find customer"
       })
 
-    
+
     }
     else{
       let length= customerDetail.length;
@@ -67,18 +67,18 @@ router.get('/view', function(req, res, next) {
   })
 });
 
-// find one customer and update 
+// find one customer and update
 router.put('/update', function(req, res, next) {
   console.log("tets");
   let id= req.query.user_id; // get the query params in express js
   console.log("id" ,id);
   let customerobj ={
-    firstName:"Ravi", 
+    firstName:"Ravi",
     lastName:"Yathav" ,
     email:"ravi@yopmail.com",
     PhoneNumber:6344643122,
     dob:"01-01-1996",
-    department:"Sales" 
+    department:"Sales"
   }
   customerModel.findByIdAndUpdate(id,customerobj,function(err,customerRes){
     if(err){
@@ -87,12 +87,12 @@ router.put('/update', function(req, res, next) {
         status:500,message:"Unable to update the customer"
       })
 
-    
+
     }
 
     else{
        console.log("no");
-    
+
       res.send({status:200, results:customerRes})
     }
   })
@@ -101,7 +101,7 @@ router.put('/update', function(req, res, next) {
 
 
 
-// delete particular custmoner 
+// delete particular custmoner
 
 router.delete("/delete" ,(req,res,next)=>{
   let id= req.query.user_id; // get the query params in express js
@@ -112,16 +112,16 @@ router.delete("/delete" ,(req,res,next)=>{
         status:500,message:"Unable to delete customer"
       })
 
-    
+
     }
     else{
-      
+
       res.send({status:200, message:"Deleted customer successfully"})
     }
   })
 })
 
-// delete  multipel customers 
+// delete  multipel customers
 
 router.delete("/delete-many" ,(req,res,next)=>{
   let id= req.query.user_id; // get the query params in express js
@@ -132,10 +132,10 @@ router.delete("/delete-many" ,(req,res,next)=>{
         status:500,message:"Unable to delete customers"
       })
 
-    
+
     }
     else{
-      
+
       res.send({status:200, message:"Deleted customers selected successfully"})
     }
   })
