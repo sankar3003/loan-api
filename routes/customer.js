@@ -6,8 +6,14 @@ const customerModel= require("./../models/customer.model");
 // create new customer
 
 router.post("/add", function(req,res,next){
-console.log("dfsf");
-  let customerobj = new customerModel({
+
+let firstName=req.body.firstName;
+let lastName=req.body.lastName;
+let email=req.body.email;
+let PhoneNumber=req.body.PhoneNumber
+let dob=req.body.dob
+let department=req.body.department;
+   const customerobj = new customerModel({
     firstName:firstName, 
     lastName:lastName,
     email:email,
@@ -15,8 +21,8 @@ console.log("dfsf");
     dob:dob,
     department:department
   }) 
-  
-  customerobj.save(function(err,resss){
+  console.log("dsfsd" , customerobj);
+  customerobj.save(function(err){
 
     if(err){
       res.send({
@@ -26,7 +32,7 @@ console.log("dfsf");
 
     }
     else{
-      res.send({status:200, message:"Saved", customerDetails:resss})
+      res.send({status:200, message:"Saved",})
     }
   })
 })
@@ -42,6 +48,7 @@ router.get('/list', function(req, res, next) {
 
     }
     else{
+   
       let length= customerData.length;
       res.send({status:200, dataLength:length, results:customerData})
     }
