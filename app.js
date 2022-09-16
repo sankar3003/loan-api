@@ -10,7 +10,9 @@ mongoose.connect("mongodb://localhost:27017/loans_management");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var customerRouter = require("././routes/customer")
+var customerRouter = require("././routes/customer");
+var todoRouter = require("././routes/todo")
+
 // var loanRouter = require("././routes/loan")
 // var auditRouter = require("././routes/audit")
 // var invoiceRouter = require("././routes/invoice")
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/customers', customerRouter);
+app.use("/todo",todoRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
