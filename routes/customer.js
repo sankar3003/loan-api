@@ -68,8 +68,8 @@ router.get('/view', function(req, res, next) {
 
     }
     else{
-      let length= customerDetail.length;
-      res.send({status:200, dataLength:length, results:customerDetail})
+      
+      res.send({status:200, results:customerDetail})
     }
   })
 });
