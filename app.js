@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var customerRouter = require("././routes/customer");
 var todoRouter = require("././routes/todo")
-
+var registerUser= require("././routes/register")
 // var loanRouter = require("././routes/loan")
 // var auditRouter = require("././routes/audit")
 // var invoiceRouter = require("././routes/invoice")
@@ -37,7 +37,7 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/customers', customerRouter);
 app.use("/todo",todoRouter)
-
+app.use("/customer", registerUser)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   console.log("dsasd");
