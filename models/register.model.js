@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 
 let registerSchema= mongoose.Schema({
      username:{type:String,require:true, unique:true },
-password:String
+password:{type:String}
 
 })
 
